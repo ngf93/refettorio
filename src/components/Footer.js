@@ -122,7 +122,7 @@ const Footer = observer(() => {
                             <div className='mb-2'><a href='tel:+78432920292'>+7 (843) 292-0-292</a></div>
                             <div className='d-flex align-items-center justify-content-end'>
                                 <span>Наши социальные сети:</span>
-                                <a href="https://www.instagram.com/totospizza.ru/" className="social ms-3" target="_blank">
+                                <a href="https://www.instagram.com/arome_kzn/" className="social ms-3" target="_blank">
                                     <img src="/images/icons/insta.svg" alt="instagram" />
                                 </a>
                             </div>

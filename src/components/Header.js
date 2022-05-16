@@ -14,7 +14,7 @@ const Header = observer(() => {
     const { user, cart, product } = useContext(Context)
     const [isShown, setIsShown] = useState(false)
     const localAddress = localStorage.getItem('address')
-    const [address, setAddress] = useState((localAddress) ? localAddress : 'Ямашева 97')
+    const [address, setAddress] = useState((localAddress) ? localAddress : 'Казань, ул. Театральная д.3')
 
     useEffect(() => {
         fetchCategory().then(data => {
@@ -33,24 +33,46 @@ const Header = observer(() => {
                 <div className="container">
                     <NavLink exact to={HOME_ROUTE} className="logo"><img src='/images/logo.png' alt="Refettorio" /></NavLink>
                     <div className='flex-1'>
-                        <div className="mx-md-4 d-flex align-items-center">
-                            <img src="/images/icons/marker.svg" width="14" />
-                            <NavDropdown
-                                title={address}
-                                className="fw-6 fs-11 address-menu"
-                            >
-                                <NavDropdown.Item onClick={changeAddress} active={(address === 'Ямашева 97') ? true : false}>Ямашева 97 </NavDropdown.Item>
-                                <NavDropdown.Item onClick={changeAddress} active={(address === 'Гвардейская 33') ? true : false}>Гвардейская 33</NavDropdown.Item>
-                            </NavDropdown>
-                            <a className="ms-3" href={(address === 'Ямашева 97') ? 'tel:+7 843 226-80-60' : 'tel:+7 843 226-80-06'}>
-                                <img src="/images/icons/phone.svg" width="18" />
-                                <span className="d-none d-md-inline-block ms-3 fw-6 fs-11">{(address === 'Ямашева 97') ? '+7 843 226-80-60' : '+7 843 226-80-06'}</span>
+                        <div className='d-flex justify-content-between align-items-center fs-11'>
+                            <form className='form-search d-flex align-items-center'>
+                                <input type="search" placeholder='Поиск по сайту...' />
+                                <button type='submit' className='btn btn-2'>Найти</button>
+                            </form>
+
+                            <div className="d-flex align-items-center">
+                                <img src="/images/icons/place.svg" alt="адрес"/>
+                                <NavDropdown
+                                    title={address}
+                                    className="address-menu"
+                                >
+                                    <NavDropdown.Item onClick={changeAddress} active={(address === 'Казань, ул. Театральная д.3') ? true : false}>Казань, ул. Театральная д.3</NavDropdown.Item>
+                                </NavDropdown>
+                            </div>
+
+                            <div className="d-flex align-items-center">
+                                <img src="/images/icons/schedule.svg" alt="расписание"/>
+                                <span className="ms-2">Ежедневно с 10:00 до 23:00</span>
+                            </div>
+
+                            <a href="tel:+78432920292">
+                                <img src="/images/icons/call.svg" alt="звонок"/>
+                                <span className="ms-2">+7 (843) 292-0-292</span>
+                            </a>
+
+                            <a href="https://www.instagram.com/arome_kzn/" target="_blank">
+                                <img src="/images/icons/insta.svg" alt="instagram" />
                             </a>
                         </div>
+
                         <div className="mt-3 w-100 flex-1 d-none d-md-flex align-items-center">
                             <nav className="w-100 d-none d-lg-block">
                                 <ul>
-                                    <li><a href="">Меню</a></li>
+                                    {/* <li>
+                                        <NavLink to="/">
+                                            <img src='/images/icons/menu.png' alt="Меню" className='me-2'/>
+                                            <span>Меню</span>
+                                        </NavLink>
+                                    </li> */}
                                     <li><NavLink to={ABOUT_ROUTE}>О нас</NavLink></li>
                                     <li><NavLink to={DELIVERY_ROUTE}>Доставка и оплата</NavLink></li>
                                     <li><NavLink to={CONTACTS_ROUTE}>Вакансии</NavLink></li>
@@ -79,7 +101,7 @@ const Header = observer(() => {
                                             <NavLink to={CART_ROUTE} onMouseEnter={() => setIsShown(true)} onMouseLeave={() => setIsShown(false)} className="btn-svg position-relative">
                                                 <img src='/images/icons/cart.png' alt="Корзина" className='me-2'/>
                                                 <span>Корзина</span>
-                                                {(cart.cart.length > 0) && <div className="count">{cart.cart.length}</div>}
+                                                {(cart.cart.length > 0) && <span>({cart.cart.length})</span>}
                                             </NavLink>
                                             {isShown ?
                                                 <div className="cart-preview" onMouseEnter={() => setIsShown(true)} onMouseLeave={() => setIsShown(false)}>
@@ -105,8 +127,6 @@ const Header = observer(() => {
                                     </li>
                                 </ul>
                             </nav>
-                            
-                            
                         </div>
                     </div>
                 </div>

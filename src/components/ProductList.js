@@ -11,7 +11,7 @@ const ProductList = observer(() => {
 
         return <>
             <Element name={category.item.id} className="element">
-                <h5 className="mb-4">{category.item.title}</h5>
+                <h2 className="mb-4">{category.item.title}</h2>
             </Element>
             <div className="row row-cols-sm-3 row-cols-xl-4 gx-2 gy-3 g-md-4">
                 {

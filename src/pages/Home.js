@@ -24,6 +24,8 @@ const Home = observer(() => {
     const [updateState, setUpdateState] = useState(false)
     const history = useHistory()
     const handleClose = () => history.push(HOME_ROUTE)
+    const [android, setAnd] = useState(false)
+    const [ios, setIOS] = useState(false)
 
     const addCart = () => {
         cart.setCart(product.product)
@@ -154,7 +156,100 @@ const Home = observer(() => {
                 </>
             }
             <main>
-                <section id="sec-12">
+                <section className='sec-1'>
+                    <Swiper
+                        loop={true}
+                        slidesPerView={1}
+                        modules={[Pagination]}
+                        pagination={{ clickable: true }}
+                        className="swiper-main"
+                    >
+                        <SwiperSlide className='position-relative'>
+                            <img src="/images/main-slider/slide1.jpg" alt="" className='slide-bg'/>
+                            <div className='container'>
+                                <div className='row'>
+                                    <div className='col-6'>
+                                        <h1>Пиццерия Refettorio!</h1>
+                                        <p className='fs-15 mb-2'>Дорогие гости!</p>
+                                        <p className='fs-15 mb-3'>Мы возвращаем скидку в заведении по будням с 12 до 15 - 20%.</p>
+                                        <ul className='list-unstyled fs-13 ps-3 mb-3'>
+                                            <li>! Скидка на день рождения остаётся прежней -15%;</li>
+                                            <li>! Скидка по карте гостя остаётся прежней -10%;</li>
+                                            <li>! Скидка на самовывоз-10%.</li>
+                                        </ul>
+                                        <p className='fs-15'>С уважением Ваша REFETTORIO!</p> 
+                                    </div>
+                                </div>
+                            </div>
+                        </SwiperSlide>
+                        <SwiperSlide className='position-relative'>
+                            <img src="/images/main-slider/slide2.jpg" alt="" className='slide-bg'/>
+                            <div className='container'>
+                                <div className='row'>
+                                    <div className='col-6'>
+                                        <h2>Вы можете скачать наше мобильное приложение</h2>
+                                        <p className='fs-15 mb-2'>Наше приложение на доставку уже появилось в GOOGLE PLAY и APP STORE*</p>
+                                        <div className='d-flex text-center mt-4'>
+                                            <figure className='position-relative'>
+                                                <img src="/images/qr-1.jpeg" alt="Android"/>
+                                                <figcaption className='mt-2'><a className='stretched-link' onClick={()=>setAnd(true)}>Android</a></figcaption>
+                                            </figure>
+                                            <figure className='position-relative ms-4'>
+                                                <img src="/images/qr-2.jpeg" alt="IOS"/>
+                                                <figcaption className='mt-2'><a className='stretched-link' onClick={()=>setIOS(true)}>IOS</a></figcaption>
+                                            </figure>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </SwiperSlide>
+                    </Swiper>
+                </section>
+
+                <section className="sec-2 mb-8 mt-3 mt-md-5">
+                    <div className="container">
+                        <h2>Мы предлагаем ознакомиться с нашим меню</h2>
+                        <div className='d-flex align-items-center justify-content-between'>
+                            <div className='ingredints-sort d-flex align-items-center'>
+                                <a href="" className='me-3'>
+                                    <img src='/images/icons/vegan.png' alt="вегетарианское" className='me-2'/>
+                                    вегетарианское
+                                </a>
+                                <a href="" className='me-3'>
+                                    <img src='/images/icons/seafood.png' alt="рыбы" className='me-2'/>
+                                    рыбы
+                                </a>
+                                <a href="" className='me-3'>
+                                    <img src='/images/icons/spicy.png' alt="острое" className='me-2'/>
+                                    острое
+                                </a>
+                                <a href="" className='me-3'>
+                                    <img src='/images/icons/chicken.png' alt="курица" className='me-2'/>
+                                    курица
+                                </a>
+                                <a href="">
+                                    <img src='/images/icons/meat.png' alt="мясо" className='me-2'/>
+                                    мясо
+                                </a>
+                            </div>
+                            <div className='text-end ms-5'>ГОТОВОЕ БЛЮДО МОЖЕТ ОТЛИЧАТЬСЯ ОТ БЛЮДА НА ФОТОГРАФИИ</div>
+                        </div>
+                    
+                        {/* <p style={{textAlign: 'center',margin: 30,fontSize: 18, color: 'red'}}>На сайте ведутся технические работы, заказы принимаем по телефонам: Ямашева 97: +7 843 226-80-60, Гвардейская 33: +7 843 226-80-06</p> */}
+                        {/* <div className="card my-4">
+                            <div className="card-body text-danger">В данный момент мы не принимаем заказы с сайта. Вы можете сделать заказ по номерам 226-80-06 (Гвардейская 33) или 226-80-60 (Ямашева 97)</div>
+                        </div> */}
+                        {
+                            product.selectedCategory && product.selectedCategory.title ?
+                                <h1 className="h3 fw-6 mb-4 text-center text-md-start">{product.selectedCategory.title}</h1>
+                                : ''
+                        }
+
+                        <ProductList />
+                    </div>
+                </section>
+
+                <section id="sec-12" className='mb-5'>
                     <Swiper
                         loop={true}
                         slidesPerView={1}
@@ -181,22 +276,48 @@ const Home = observer(() => {
                         <SwiperSlide className="px-2"><img src="/images/home-slide-4.jpg" alt="" className='img-fluid' /></SwiperSlide>
                     </Swiper>
                 </section>
-                <section className="sec-2 mb-8 mt-3 mt-md-5">
-                    <div className="container">
-                        {/* <p style={{textAlign: 'center',margin: 30,fontSize: 18, color: 'red'}}>На сайте ведутся технические работы, заказы принимаем по телефонам: Ямашева 97: +7 843 226-80-60, Гвардейская 33: +7 843 226-80-06</p> */}
-                        {/* <div className="card my-4">
-                            <div className="card-body text-danger">В данный момент мы не принимаем заказы с сайта. Вы можете сделать заказ по номерам 226-80-06 (Гвардейская 33) или 226-80-60 (Ямашева 97)</div>
-                        </div> */}
-                        {
-                            product.selectedCategory && product.selectedCategory.title ?
-                                <h1 className="h3 fw-6 mb-4 text-center text-md-start">{product.selectedCategory.title}</h1>
-                                : ''
-                        }
 
-                        <ProductList />
+                <section className='mb-5'>
+                    <div className='container'>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <h2>Контакты</h2>
+                                <div className='fs-12'>
+                                    <div className='fw-6 mb-2'>Телефон:</div>
+                                    <div className='mb-2'><a href="tel:+78432920292">+7 (843) 292-0-292</a></div>
+                                    <div><a href="tel: +79872152215"> +7 (987) 215-22-15</a></div>
+
+                                    <div className='fw-6 mt-4 mb-2'>Время работы:</div>
+                                    <div className='mb-2'>Пиццерия открыта ежедневно с&nbsp;10:00 до&nbsp;23:00</div>
+                                    <div>Заказы на доставку принимаются ежедневно с&nbsp;10:00 до&nbsp;22:30</div>
+
+                                    <div className='fw-6 mt-4 mb-2'>Адрес:</div>
+                                    <div>г.Казань, ул. Театральная д.3</div>
+
+                                    <div className='fw-6 mt-4 mb-2'>Вопросы и&nbsp;предложения:</div>
+                                    <div><a href="mailto:Refetorio@yandex.ru">Refetorio@yandex.ru</a></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-8 map">
+                                <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A3fc00c6449a118eb4c90e7d11a3b4a6759d15f3188120b09ab509d7ad83df91b&amp;source=constructor" width="100%" height="100%" frameborder="0"></iframe>
+                            </div>
+                        </div>
                     </div>
                 </section>
             </main>
+            {/* Modal */}
+            <Modal size="lg" show={android} onHide={()=>setAnd(false)}>
+                <Modal.Body>
+                    <img src="/images/qr-1.jpeg" alt="Android" className='img-fluid'/>
+                </Modal.Body>
+                <CloseButton aria-label="Hide" onClick={()=>setAnd(false)} className="position-absolute top-1 right-1"/>
+            </Modal>
+            <Modal size="lg" show={ios} onHide={()=>setIOS(false)}>
+                <Modal.Body>
+                    <img src="/images/qr-2.jpeg" alt="IOS" className='img-fluid'/>
+                </Modal.Body>
+                <CloseButton aria-label="Hide" onClick={()=>setIOS(false)} className="position-absolute top-1 right-1"/>
+            </Modal>
         </>
     );
 });
