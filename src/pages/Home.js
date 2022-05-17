@@ -11,6 +11,7 @@ import { fetchProducts, fetchOneProduct } from "../http/productAPI"
 import { HOME_ROUTE } from "../utils/consts"
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Navigation, Pagination } from 'swiper'
+
 SwiperCore.use([Navigation, Pagination])
 
 const Home = observer(() => {
@@ -26,6 +27,7 @@ const Home = observer(() => {
     const handleClose = () => history.push(HOME_ROUTE)
     const [android, setAnd] = useState(false)
     const [ios, setIOS] = useState(false)
+    const [review, setReview] = useState(false)
 
     const addCart = () => {
         cart.setCart(product.product)
@@ -250,6 +252,64 @@ const Home = observer(() => {
                 </section>
 
                 <section id="sec-12" className='mb-5'>
+                    <div className='container'>
+                        <h2>Спецпредложения и акции</h2>
+                        <Swiper
+                            className='classic-arrows pb-5'
+                            loop={true}
+                            slidesPerView={1}
+                            spaceBetween={10}
+                            modules={[Navigation, Pagination]}
+                            pagination={{ 
+                                clickable: true,
+                                type: 'fraction'
+                             }}
+                            navigation
+                            breakpoints={{
+                                576: {
+                                    slidesPerView: 2,
+                                    spaceBetween: 20,
+                                },
+                                992: {
+                                    slidesPerView: 3,
+                                    spaceBetween: 20,
+                                },
+                                1200: {
+                                    slidesPerView: 3,
+                                    spaceBetween: 30,
+                                }
+                            }}
+                        >
+                            <SwiperSlide>
+                                <div className='promotion'>
+                                    <img src="/images/img1.jpeg" alt="Время ланча"/>
+                                    <div className='promo-info'>
+                                        <div className='title'><div>Время ланча</div></div>
+                                        <div>С&nbsp;понедельника по&nbsp;пятницу с&nbsp;12&nbsp;до&nbsp;15 скидка&nbsp;15% на&nbsp;все&nbsp;меню по&nbsp;кухне</div>
+                                    </div>
+                                </div>
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <div className='promotion'>
+                                    <img src="/images/img2.jpeg" alt="Дарим скидку 10% на заказ с собой"/>
+                                    <div className='promo-info'>
+                                        <div className='title'><div>Дарим скидку 10% на заказ с собой</div></div>
+                                        <div>Закажите ароматную пиццу и другие блюда итальянской кухни.</div>
+                                    </div>
+                                </div>
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <div className='promotion'>
+                                    <img src="/images/img3.jpeg" alt="Отмечай День рождения вместе с нами!"/>
+                                    <div className='promo-info'>
+                                        <div className='title'><div>Отмечай День рождения вместе с нами!</div></div>
+                                        <div>Дарим скидку -15% на все меню по кухне.</div>
+                                    </div>
+                                </div>
+                            </SwiperSlide>
+                        </Swiper>
+                    </div>
+                    
                     <Swiper
                         loop={true}
                         slidesPerView={1}
@@ -277,8 +337,83 @@ const Home = observer(() => {
                     </Swiper>
                 </section>
 
-                <section className='mb-5'>
+                <section id="sec-4">
                     <div className='container'>
+                        <h2>Пиццерия «Refettorio» рекомендуют наши гости</h2>
+                        <Swiper
+                            className='classic-arrows'
+                            loop={true}
+                            slidesPerView={1}
+                            spaceBetween={10}
+                            modules={[Navigation, Pagination]}
+                            pagination={{ 
+                                clickable: true,
+                                type: 'fraction'
+                             }}
+                            navigation
+                            breakpoints={{
+                                576: {
+                                    slidesPerView: 2,
+                                    spaceBetween: 20,
+                                },
+                                992: {
+                                    slidesPerView: 3,
+                                    spaceBetween: 30,
+                                }
+                            }}
+                        >
+                            <SwiperSlide>
+                                <div className='review'>
+                                    <div className='d-flex align-items-center mb-4'>
+                                        <img src="/images/icons/user2.svg" alt="клиент"/>
+                                        <div className='ms-3 fs-13 text-truncate'>Darina Sokolovskaya</div>
+                                    </div>
+                                    <p className='fs-12'>Хорошее заведение! Все понравилось, еда и приятная атмосфера. Очень вкусная пицца на очень тонком тесте. Вежливый и отзывчивый персонал!</p>
+                                </div>
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <div className='review'>
+                                    <div className='d-flex align-items-center mb-4'>
+                                        <img src="/images/icons/user2.svg" alt="клиент"/>
+                                        <div className='ms-3 fs-13 text-truncate'>Альберт</div>
+                                    </div>
+                                    <p className='fs-12'>Добрый день! Наконец-то появилась возможность разместить заказ на сайте. Молодцы! Ждем мобильное приложение!</p>
+                                </div>
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <div className='review'>
+                                    <div className='d-flex align-items-center mb-4'>
+                                        <img src="/images/icons/user2.svg" alt="клиент"/>
+                                        <div className='flex-1 ms-3 fs-13 text-truncate'>Татьяна</div>
+                                    </div>
+                                    <p className='fs-12'>Очень любим с семьей ходить в A'ROME! Приятная атмосфера, вкусная еда, доброжелательный персонал. Пицца просто огонь!</p>
+                                </div>
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <div className='review'>
+                                    <div className='d-flex align-items-center mb-4'>
+                                        <img src="/images/icons/user2.svg" alt="клиент"/>
+                                        <div className='flex-1 ms-3 fs-13 text-truncate'>Лилия</div>
+                                    </div>
+                                    <p className='fs-12'>После карантина стали даже лучше! Отличная подача, вкусно, порции достаточные, есть гибкая система скидок и акций. Отлично настроили сайт!</p>
+                                </div>
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <div className='review'>
+                                    <div className='d-flex align-items-center mb-4'>
+                                        <img src="/images/icons/user2.svg" alt="клиент"/>
+                                        <div className='flex-1 ms-3 fs-13 text-truncate'>Юлия</div>
+                                    </div>
+                                    <p className='fs-12'>Очень вкусная пицца!)</p>
+                                </div>
+                            </SwiperSlide>
+                        </Swiper>
+                        <button type="button" onClick={()=>setReview(true)} className='btn btn-1 fs-12 mt-5'>Оставить отзыв</button>
+                    </div>
+                </section>
+
+                <section className='mb-5'>
+                    <div className='container py-5'>
                         <div class="row">
                             <div class="col-lg-4">
                                 <h2>Контакты</h2>
@@ -317,6 +452,27 @@ const Home = observer(() => {
                     <img src="/images/qr-2.jpeg" alt="IOS" className='img-fluid'/>
                 </Modal.Body>
                 <CloseButton aria-label="Hide" onClick={()=>setIOS(false)} className="position-absolute top-1 right-1"/>
+            </Modal>
+            <Modal show={review} onHide={()=>setReview(false)}>
+                <Modal.Body>
+                    <form>
+                        <h3>Оставить отзыв</h3>
+                        <p className='fs-12 mb-4'>Напишите отзыв о нашей работе или продукции</p>
+                        <div className='row g-3'>
+                            <div className='col-6'>
+                                <input type='text' placeholder='Имя'/>
+                            </div>
+                            <div className='col-6'>
+                                <input type='tel' placeholder='Номер телефона'/>
+                            </div>
+                            <div className='col-12'>
+                                <textarea rows='3' placeholder='Комментарий'></textarea>
+                            </div>
+                        </div>
+                        <button type="submit" className='btn btn-1 fs-12 mt-4'>Отправить</button>
+                    </form>
+                </Modal.Body>
+                <CloseButton aria-label="Hide" onClick={()=>setReview(false)} className="position-absolute top-1 right-1"/>
             </Modal>
         </>
     );
