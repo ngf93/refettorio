@@ -21,13 +21,13 @@ const Cart = observer(() => {
     }, [])
 
     return (
-        <main>
+        <main className='pt-4 pt-lg-5'>
             <section id="sec-14" className="mb-8">
                 <div className="container">
                     {
                         (cart.cart && cart.cart.length > 0) ?
                             <>
-                                <h1 className="text-center text-md-start">Корзина</h1>
+                                <h1 className="inner text-center text-md-start">Корзина</h1>
                                 <form>
                                     <CartContent />
                                 </form>

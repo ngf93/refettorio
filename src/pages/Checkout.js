@@ -127,7 +127,7 @@ const Checkout = observer(() => {
     }
     if (sendOrder && sendOrder.status == 1) {
         return (
-            <main>
+            <main className='pt-4 pt-lg-5'>
                 <section className="mt-5 mb-5">
                     <div className="container">
                         <div className="row justify-content-center">
@@ -143,7 +143,7 @@ const Checkout = observer(() => {
         )
     } else if (sendOrder && sendOrder.status == 2) {
         return (
-            <main>
+            <main className='pt-4 pt-lg-5'>
                 <section className="mt-5 mb-5">
                     <div className="container">
                         <div className="row justify-content-center">
@@ -159,7 +159,7 @@ const Checkout = observer(() => {
         )
     }
     return (
-        <main>
+        <main className='pt-4 pt-lg-5'>
             {
                 (timeNow.getHours() === 21 || timeNow.getHours() < 10) ?
                     <section className="mb-8">

@@ -5,70 +5,79 @@ const About = () => {
         document.title = "Доставка и оплата"
     }, [])
     return (
-        <main>
+        <main className='pt-4 pt-lg-5'>
             <section id="sec-8" className="mb-8">
                 <div className="container">
-                    <h1 className="h3 fw-6 mb-4 text-center text-md-start">Доставка и оплата</h1>
+                    <h1 className="inner">Доставка и оплата</h1>
+                    <p className='fs-12 mb-4'>Бесплатная доставка при заказе от 1000 ₽ в черте города.</p>
+                    <p className='fs-12 mb-4'>Среднее время доставки 1ч - 1ч 20м.</p>
+                    <p className='fs-12 mb-4'>Время доставки может меняться в зависимости от количество заказов.</p>
+                    <p className='fs-12 mb-4'>Скидки и акции на доставку не распространяются.</p>
+                    <p className='fs-12 mb-4'>Важно понимать, что наш курьер терпеливо подождёт вас 10 минут у входа, если вдруг перестанете выходить на связь или не откроете дверь. Но затем ему придётся уезжать к другим Клиентам, чтобы вовремя доставить свежую еду. В этом случае вам будет необходимо повторно связаться с Администратором.</p>
+                    <h2 className="text-center text-md-start mt-5">Способы доставки:</h2>
                     <div className="row mb-5">
-                        <div className="col-md-4">
-                            <div id="map">
-                                <iframe src="https://www.google.com/maps/d/embed?mid=17lCQLErcNQTUS5rYvyk5pt7kMc84FI5X&ehbc=2E312F" width="100%" height="400"></iframe>
+                        <div className="col-lg-6 d-flex align-items-start mb-4 mb-lg-0">
+                            <img src="/images/icons/delivery1.svg" alt="Доставка курьером" className='icon'/>
+                            <div className='flex-1 ms-2 ms-xl-4'>
+                                <h6 className="fs-13 fw-6">Доставка курьером</h6>
+                                <p className='fs-12'>Бесплатная доставка. Минимальная сумма заказа 1000 руб.</p>
                             </div>
                         </div>
-                        <div className="col-md-8">
-                            <ul className="ul-style-default">
-                                <li>Принятие заказов ежедневно (пн-вс) с 10:00 до 21:00</li>
-                                <li>При доставке на расстояние менее 9 км</li>
-                                <ul className="my-2 my-md-0">
-                                    <li>Минимальный заказ 450 р</li>
-                                    <li>Бесплатная достовка при заказе от 700 р</li>
-                                </ul>
-                                <li>При доставке на расстояние более 9 км</li>
-                                <ul className="my-2 my-md-0">
-                                    <li>Минимальный заказ 1000 р</li>
-                                    <li>Бесплатная достовка при заказе от 1500 р</li>
-                                </ul>
-                                <li>Среднее время доставки составляет от 45 минут. Максимальное время доставки заказа от 60 до 90 минут.<br />
-                                    <a className="text-success fw-6 d-inline-block color-green mt-3">Подробнее о доставке</a>
-                                </li>
-                            </ul>
+                        <div className="col-lg-6 d-flex align-items-start">
+                            <img src="/images/icons/delivery2.svg" alt="Самовывоз" className='icon'/>
+                            <div className='flex-1 ms-2 ms-xl-4'>
+                                <h6 className="fs-13 fw-6">Самовывоз</h6>
+                                <div className="fs-12 mb-2">Казань, ул. Театральная д.3</div>
+                                <div className='fs-12'><a href="tel:+7 (843) 292-0-292">+7 (843) 292-0-292</a></div>
+                            </div>
                         </div>
                     </div>
-                    <h2 className="h3 fw-6 mb-4 text-center text-md-start">Варианты оплаты</h2>
-                    <div className="row row-cols-md-3 row-cols-lg-3 mb-5">
-                        <div>
-                            <div className="text-center card card-body">
-                                <h5 className="fw-6 text-center">Курьеру</h5>
-                                <div className="d-flex justify-content-center align-items-center mb-3">
-                                    <img className="mx-2" src="/images/nal.png" height="35" />
-                                    <img className="mx-2" src="/images/visa.png" height="20" />
-                                    <img className="mx-2" src="/images/mastercard.png" height="25" />
-                                    <img className="mx-2" src="/images/mir.png" height="20" />
-                                </div>
-                                <p>Наличными или банковской картой через платежный терминал курьеру</p>
+
+                    <h2 className="text-center text-md-start">Способы оплаты:</h2>
+                    <div className="row">
+                        <div className="col-lg-4 d-flex align-items-start mb-4 mb-lg-0">
+                            <img src="/images/icons/payment1.svg" alt="Онлайн оплата" className='icon' />
+                            <div className='flex-1 ms-2 ms-xl-4'>
+                                <h6 className="fs-13 fw-6">Онлайн оплата</h6>
+                                <ul className='list-unstyled payment mt-2'>
+                                    <li>
+                                        <img src="/images/payment/alpha.png" alt="Альфа-банк"/>
+                                    </li>
+                                    <li>
+                                        <img src="/images/payment/visa.png" alt="visa"/>
+                                    </li>
+                                    <li>
+                                        <img src="/images/payment/mastercard.png" alt="mastercard"/>
+                                    </li>
+                                    <li>
+                                        <img src="/images/payment/mir.png" alt="мир"/>
+                                    </li>
+                                    <li>
+                                        <img src="/images/payment/verified-by-visa.png" alt="verified by visa"/>
+                                    </li>
+                                    <li>
+                                        <img src="/images/payment/securecode.png" alt="mastercard securecode"/>
+                                    </li>
+                                    <li>
+                                        <img src="/images/payment/miraccept.png" alt="mir accept"/>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
-                        <div>
-                            <div className="text-center card card-body">
-                                <h5 className="fw-6 text-center">В ресторане</h5>
-                                <div className="d-flex justify-content-center align-items-center mb-3">
-                                    <img className="mx-2" src="/images/nal.png" height="35" />
-                                    <img className="mx-2" src="/images/visa.png" height="20" />
-                                    <img className="mx-2" src="/images/mastercard.png" height="25" />
-                                    <img className="mx-2" src="/images/mir.png" height="20" />
-                                </div>
-                                <p>Наличными или банковской картой через платежный терминал в ресторане</p>
+
+                        <div className="col-lg-4 d-flex align-items-start mb-4 mb-lg-0">
+                            <img src="/images/icons/payment1.svg" alt="Оплата картой курьеру" className='icon'/>
+                            <div className='flex-1 ms-2 ms-xl-4'>
+                                <h6 className="fs-13 fw-6">Оплата картой курьеру</h6>
+                                <p>Курьер привезёт с&nbsp;собой мобильный платёжный терминал. Принимаются карты Mastercard, Maestro и&nbsp;Visa.</p>
                             </div>
+
                         </div>
-                        <div>
-                            <div className="text-center card card-body">
-                                <h5 className="fw-6 text-center">На сайте</h5>
-                                <div className="d-flex justify-content-center align-items-center mb-3">
-                                    <img className="mx-2" src="/images/visa.png" height="20" />
-                                    <img className="mx-2" src="/images/mastercard.png" height="25" />
-                                    <img className="mx-2" src="/images/mir.png" height="20" />
-                                </div>
-                                <p>Банковской картой через безопасный платежный сервис веб-сайта</p>
+                        <div className="col-lg-4 d-flex align-items-start">
+                            <img src="/images/icons/payment1.svg" alt="Оплата наличными" className='icon'/>
+                            <div className='flex-1 ms-2 ms-xl-4'>
+                                <h6 className="fs-13 fw-6">Оплата наличными</h6>
+                                <p>Вы&nbsp;можете оплатить заказ наличными нашему курьеру или&nbsp;при&nbsp;самовывозе</p>
                             </div>
                         </div>
                     </div>

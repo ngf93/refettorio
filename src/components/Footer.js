@@ -1,11 +1,12 @@
 import React, { useContext, useState } from 'react'
 import { Context } from "../index"
 import { Link, NavLink } from "react-router-dom"
-import { HOME_ROUTE, PROFILE_ROUTE, DELIVERY_ROUTE, ABOUT_ROUTE, POLICY_ROUTE, CART_ROUTE, FAVORITES_ROUTE, CATALOG_ROUTE, TERMS_ROUTE, OFFER_ROUTE } from "../utils/consts"
+import { HOME_ROUTE, PROFILE_ROUTE, DELIVERY_ROUTE, ABOUT_ROUTE, POLICY_ROUTE, CART_ROUTE, FAVORITES_ROUTE, CATALOG_ROUTE, TERMS_ROUTE, OFFER_ROUTE, CONTACTS_ROUTE, VACANCY_ROUTE } from "../utils/consts"
 import { observer } from "mobx-react-lite"
 import { login, registration, newPassword } from "../http/userAPI"
 import InputMask from 'react-input-mask'
 import { NotificationManager } from 'react-notifications'
+import { NavDropdown } from "react-bootstrap"
 
 const Footer = observer(() => {
     const { user, cart, product } = useContext(Context)
@@ -72,29 +73,37 @@ const Footer = observer(() => {
             NotificationManager.error(e.response.data.message)
         }
     }
+
+    const localAddress = localStorage.getItem('address')
+    const [address, setAddress] = useState((localAddress) ? localAddress : 'Казань, ул. Театральная д.3')
+    const changeAddress = (e) => {
+        setAddress(e.target.innerText)
+        localStorage.setItem('address', e.target.innerText);
+    }
+
     return (
         <>
-            <footer className="d-none d-md-block">
+            <footer className="d-block">
                 <div className='container'>
                     <div className='row'>
-                        <div className='col-3'>
-                            <div className='mb-4'>@{(new Date().getFullYear())} REFETTORIO</div>
+                        <div className='col-sm-6 col-lg-3 order-2 order-lg-1 text-center text-sm-start'>
+                            <div className='mb-3 mb-lg-4'>@{(new Date().getFullYear())} REFETTORIO</div>
                             <ul className='list-unstyled primary'>
-                                <li className='mb-1'><Link to={POLICY_ROUTE}>Политика конфиденциальности</Link></li>
-                                <li className='mb-1'><Link to={OFFER_ROUTE}>Договор оферты</Link></li>
+                                <li className='mb-2'><Link to={POLICY_ROUTE}>Политика конфиденциальности</Link></li>
+                                <li className='mb-2'><Link to={OFFER_ROUTE}>Договор оферты</Link></li>
                                 <li><Link to={TERMS_ROUTE}>Правила оплаты</Link></li>
                             </ul>
                         </div>
-                        <div className='col-6'>
-                            <nav className='w-100'>
+                        <div className='col-12 col-lg-6 order-1 order-lg-2 mb-4 mb-lg-0'>
+                            <nav className='d-none d-lg-block w-100'>
                                 <ul className='list-unstyled w-100'>
-                                    <li><a href="">Меню</a></li>
-                                    <li><a href="">О нас</a></li>
-                                    <li><a href="">Вакансии</a></li>
-                                    <li><a href="">Доставка и оплата</a></li>
+                                    <li><Link to={HOME_ROUTE}>Меню</Link></li>
+                                    <li><Link to={ABOUT_ROUTE}>О нас</Link></li>
+                                    <li><Link to={VACANCY_ROUTE}>Вакансии</Link></li>
+                                    <li><Link to={DELIVERY_ROUTE}>Доставка и оплата</Link></li>
                                 </ul>
                             </nav>
-                            <ul className='list-unstyled payment mt-4'>
+                            <ul className='list-unstyled payment mt-lg-4'>
                                 <li>
                                     <img src="/images/payment/alpha.png" alt="Альфа-банк"/>
                                 </li>
@@ -118,15 +127,15 @@ const Footer = observer(() => {
                                 </li>
                             </ul>
                         </div>
-                        <div className='col-3 text-end'>
+                        <div className='col-sm-6 col-lg-3 order-3 text-center text-sm-end mt-4 mt-sm-0'>
                             <div className='mb-2'><a href='tel:+78432920292'>+7 (843) 292-0-292</a></div>
-                            <div className='d-flex align-items-center justify-content-end'>
+                            <div className='d-flex align-items-center justify-content-center justify-content-sm-end'>
                                 <span>Наши социальные сети:</span>
                                 <a href="https://www.instagram.com/arome_kzn/" className="social ms-3" target="_blank">
                                     <img src="/images/icons/insta.svg" alt="instagram" />
                                 </a>
                             </div>
-                            <a href="http://asmpromo.ru/" alt="Создание и продвижение сайтов" title="Создание и продвижение сайтов" target="_blank" className='asm mt-5'>
+                            <a href="http://asmpromo.ru/" alt="Создание и продвижение сайтов" title="Создание и продвижение сайтов" target="_blank" className='asm mt-3 mt-sm-4 mt-lg-5'>
                                 <span>Создание и продвижение сайтов</span>
                                 <img src="/images/asm_white.png" alt="asm" />
                             </a>
@@ -196,69 +205,71 @@ const Footer = observer(() => {
                 </div> */}
             </footer>
 
-            <footer className="mobile d-flex d-md-none">
+            <footer className="mobile d-flex d-lg-none">
                 <Link to={HOME_ROUTE} className="link">
-                    <svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M15 7.1125L21.25 12.7375V22.5H18.75V15H11.25V22.5H8.75V12.7375L15 7.1125ZM15 3.75L2.5 15H6.25V25H13.75V17.5H16.25V25H23.75V15H27.5L15 3.75Z" />
+                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                        <path className='fill' fill-rule="evenodd" d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"></path>
+                        <path className='fill' fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"></path>
                     </svg>
                 </Link>
                 {
                     (user.isAuth) ?
-                        <Link to={PROFILE_ROUTE} className="btn-svg ms-3 link ms-3 d-block d-lg-none">
-                            <svg viewBox="0 0 38 39" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M19 19.5C20.8897 19.5 22.7019 18.7296 24.0381 17.3582C25.3743 15.9869 26.125 14.1269 26.125 12.1875C26.125 10.2481 25.3743 8.38814 24.0381 7.01678C22.7019 5.64542 20.8897 4.875 19 4.875C17.1103 4.875 15.2981 5.64542 13.9619 7.01678C12.6257 8.38814 11.875 10.2481 11.875 12.1875C11.875 14.1269 12.6257 15.9869 13.9619 17.3582C15.2981 18.7296 17.1103 19.5 19 19.5ZM23.75 12.1875C23.75 13.4804 23.2496 14.7204 22.3588 15.6346C21.468 16.5489 20.2598 17.0625 19 17.0625C17.7402 17.0625 16.532 16.5489 15.6412 15.6346C14.7504 14.7204 14.25 13.4804 14.25 12.1875C14.25 10.8946 14.7504 9.65459 15.6412 8.74035C16.532 7.82611 17.7402 7.3125 19 7.3125C20.2598 7.3125 21.468 7.82611 22.3588 8.74035C23.2496 9.65459 23.75 10.8946 23.75 12.1875ZM33.25 31.6875C33.25 34.125 30.875 34.125 30.875 34.125H7.125C7.125 34.125 4.75 34.125 4.75 31.6875C4.75 29.25 7.125 21.9375 19 21.9375C30.875 21.9375 33.25 29.25 33.25 31.6875ZM30.875 31.6778C30.8726 31.0781 30.5093 29.2744 28.899 27.6217C27.3505 26.0325 24.4364 24.375 19 24.375C13.5612 24.375 10.6495 26.0325 9.101 27.6217C7.49075 29.2744 7.12975 31.0781 7.125 31.6778H30.875Z"></path>
-                            </svg>
+                        <Link to={PROFILE_ROUTE} className="link">
+                            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path className='fill' d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path></svg>
                         </Link>
                         :
-                        <Link data-bs-toggle="modal" data-bs-target="#entrance" className="btn-svg ms-3 link ms-3 d-block d-lg-none">
-                            <svg viewBox="0 0 38 39" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M19 19.5C20.8897 19.5 22.7019 18.7296 24.0381 17.3582C25.3743 15.9869 26.125 14.1269 26.125 12.1875C26.125 10.2481 25.3743 8.38814 24.0381 7.01678C22.7019 5.64542 20.8897 4.875 19 4.875C17.1103 4.875 15.2981 5.64542 13.9619 7.01678C12.6257 8.38814 11.875 10.2481 11.875 12.1875C11.875 14.1269 12.6257 15.9869 13.9619 17.3582C15.2981 18.7296 17.1103 19.5 19 19.5ZM23.75 12.1875C23.75 13.4804 23.2496 14.7204 22.3588 15.6346C21.468 16.5489 20.2598 17.0625 19 17.0625C17.7402 17.0625 16.532 16.5489 15.6412 15.6346C14.7504 14.7204 14.25 13.4804 14.25 12.1875C14.25 10.8946 14.7504 9.65459 15.6412 8.74035C16.532 7.82611 17.7402 7.3125 19 7.3125C20.2598 7.3125 21.468 7.82611 22.3588 8.74035C23.2496 9.65459 23.75 10.8946 23.75 12.1875ZM33.25 31.6875C33.25 34.125 30.875 34.125 30.875 34.125H7.125C7.125 34.125 4.75 34.125 4.75 31.6875C4.75 29.25 7.125 21.9375 19 21.9375C30.875 21.9375 33.25 29.25 33.25 31.6875ZM30.875 31.6778C30.8726 31.0781 30.5093 29.2744 28.899 27.6217C27.3505 26.0325 24.4364 24.375 19 24.375C13.5612 24.375 10.6495 26.0325 9.101 27.6217C7.49075 29.2744 7.12975 31.0781 7.125 31.6778H30.875Z"></path>
-                            </svg>
+                        <Link data-bs-toggle="modal" data-bs-target="#entrance" className="link">
+                            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path className='fill' d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path></svg>
                         </Link>
                 }
-                <Link to={CART_ROUTE} className="btn-svg position-relative link">
-                    <svg viewBox="0 0 41 41" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M20.4997 3.84375C16.9813 3.84375 14.0934 6.73169 14.0934 10.25V11.5312H7.7666L7.68716 12.7331L6.40591 35.7956L6.3252 37.1562H34.6728L34.5934 35.7943L33.3122 12.7318L33.2314 11.5312H26.9059V10.25C26.9059 6.73169 24.018 3.84375 20.4997 3.84375ZM20.4997 6.40625C21.5191 6.40625 22.4968 6.81122 23.2176 7.53206C23.9384 8.2529 24.3434 9.23057 24.3434 10.25V11.5312H16.6559V10.25C16.6559 9.23057 17.0609 8.2529 17.7817 7.53206C18.5026 6.81122 19.4802 6.40625 20.4997 6.40625ZM10.1689 14.0938H14.0934V17.9375H16.6559V14.0938H24.3434V17.9375H26.9059V14.0938H30.8304L31.9515 34.5938H9.04913L10.1689 14.0938Z" />
+                <Link to={CART_ROUTE} className="position-relative link">
+                    <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+                        <path className='fill' d="M35.8538 18.7497L26.7288 5.08301C26.333 4.49967 25.6663 4.20801 24.9997 4.20801C24.333 4.20801 23.6663 4.49967 23.2705 5.10384L14.1455 18.7497H4.16634C3.02051 18.7497 2.08301 19.6872 2.08301 20.833C2.08301 21.0205 2.10384 21.208 2.16634 21.3955L7.45801 40.708C7.93717 42.458 9.54134 43.7497 11.458 43.7497H38.5413C40.458 43.7497 42.0622 42.458 42.5622 40.708L47.8538 21.3955L47.9163 20.833C47.9163 19.6872 46.9788 18.7497 45.833 18.7497H35.8538ZM18.7497 18.7497L24.9997 9.58301L31.2497 18.7497H18.7497ZM24.9997 35.4163C22.708 35.4163 20.833 33.5413 20.833 31.2497C20.833 28.958 22.708 27.083 24.9997 27.083C27.2913 27.083 29.1663 28.958 29.1663 31.2497C29.1663 33.5413 27.2913 35.4163 24.9997 35.4163Z"/>
                     </svg>
-                    {(cart.cart.length > 0) && <div className="count">{cart.cart.length}</div>}
+                    {(cart.cart.length > 0) && <div className="count position-absolute top-0 end-0 black fw-6">{cart.cart.length}</div>}
                 </Link>
-                <button className="btn-svg ms-3 link btn-svg-2 ms-3 d-block d-lg-none" type="button" data-bs-toggle="offcanvas"
+                <button className="link" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#right-menu">
                     <svg viewBox="0 0 33 33" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M4.125 16.5H28.875" />
-                        <path d="M4.125 8.25H28.875" />
-                        <path d="M4.125 24.75H28.875" />
+                        <path className='stroke' d="M4.125 16.5H28.875" />
+                        <path className='stroke' d="M4.125 8.25H28.875" />
+                        <path className='stroke' d="M4.125 24.75H28.875" />
                     </svg>
                 </button>
             </footer>
 
             <div className="offcanvas offcanvas-end" tabIndex="-1" id="right-menu">
-                <div className="offcanvas-header">
-                    <Link to={HOME_ROUTE} className="logo"><img src='/images/logo.svg' alt="Totos" /></Link>
-                    <button type="button" className="btn-close" data-bs-dismiss="offcanvas">
-                    </button>
-                </div>
+                <button type="button" className="btn-close" data-bs-dismiss="offcanvas"></button>
                 <div className="offcanvas-body">
                     <nav>
-                        <ul data-bs-dismiss="offcanvas">
-                            <li><Link to={HOME_ROUTE}>Главная</Link></li>
-                            <li><NavLink to={HOME_ROUTE}>Акции</NavLink></li>
-                            <li><NavLink to={DELIVERY_ROUTE}>Доставка и оплата</NavLink></li>
-                            <li><NavLink to={DELIVERY_ROUTE}>Контакты</NavLink></li>
+                        <ul className='list-unstyled' data-bs-dismiss="offcanvas">
                             <li><NavLink to={ABOUT_ROUTE}>О нас</NavLink></li>
-                            <li><NavLink to={FAVORITES_ROUTE}>Избранное</NavLink></li>
+                            <li><NavLink to={DELIVERY_ROUTE}>Доставка и оплата</NavLink></li>
+                            <li><NavLink to={VACANCY_ROUTE}>Вакансии</NavLink></li>
+                            <li><NavLink to={FAVORITES_ROUTE}>Сравнение</NavLink></li>
                         </ul>
                     </nav>
                 </div>
-                <div className="offcanvas-footer">
-                    <div className="py-3 d-block d-md-none text-center">
-                        <div className="mb-2">
-                            Ямашева 97 ТЦ “XL” (+7 843 226-80-60)
-                        </div>
-                        <div className="mb-2">
-                            Гвардейская 33 (+7 843 226-80-06)
-                        </div>
+                <div className="offcanvas-footer py-3 py-sm-4 px-4 px-sm-5">
+                    <div className="d-flex d-md-none align-items-center mb-3">
+                        <img src="/images/icons/place.svg" alt="адрес" className='icon'/>
+                        <NavDropdown
+                            title={address}
+                            className="address-menu"
+                        >
+                            <NavDropdown.Item onClick={changeAddress} active={(address === 'Казань, ул. Театральная д.3') ? true : false}>Казань, ул. Театральная д.3</NavDropdown.Item>
+                        </NavDropdown>
                     </div>
+
+                    <div className="d-flex align-items-center mb-3">
+                        <img src="/images/icons/schedule.svg" alt="расписание" className='icon'/>
+                        <span className="ms-2">Ежедневно с 10:00 до 23:00</span>
+                    </div>
+
+                    <a href="tel:+78432920292" className='d-flex align-items-center'>
+                        <img src="/images/icons/call.svg" alt="звонок" className='icon'/>
+                        <span className="fs-12 ms-2">+7 (843) 292-0-292</span>
+                    </a>
                 </div>
             </div>
 

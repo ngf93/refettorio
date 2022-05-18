@@ -1,5 +1,5 @@
 import Admin from "./pages/admin/index"
-import { HOME_ROUTE, ADMIN_ROUTE, CART_ROUTE, CHECKOUT_ROUTE, PRODUCT_ROUTE, PROFILE_ROUTE, DELIVERY_ROUTE, ABOUT_ROUTE, SALE_ROUTE, FAVORITES_ROUTE, POLICY_ROUTE, CONTACTS_ROUTE, CATALOG_ROUTE, TERMS_ROUTE, OFFER_ROUTE } from "./utils/consts"
+import { HOME_ROUTE, ADMIN_ROUTE, CART_ROUTE, CHECKOUT_ROUTE, PRODUCT_ROUTE, PROFILE_ROUTE, DELIVERY_ROUTE, ABOUT_ROUTE, SALE_ROUTE, FAVORITES_ROUTE, VACANCY_ROUTE, POLICY_ROUTE, CONTACTS_ROUTE, CATALOG_ROUTE, TERMS_ROUTE, OFFER_ROUTE } from "./utils/consts"
 import Home from "./pages/Home"
 import Cart from "./pages/Cart"
 import Sale from "./pages/Sale"
@@ -14,6 +14,7 @@ import Offer from "./pages/Offer"
 import Favorites from "./pages/Favorites"
 import PaySuccess from "./pages/Success"
 import PayError from "./pages/Error"
+import Vacancy from "./pages/Vacancy"
 
 export const authRoutes = [
     {
@@ -94,6 +95,10 @@ export const publicRoutes = [
     {
         path: FAVORITES_ROUTE,
         Component: Favorites
+    },
+    {
+        path: VACANCY_ROUTE,
+        Component: Vacancy
     },
     {
         path: POLICY_ROUTE,

@@ -7,7 +7,7 @@ const Error = () => {
         document.title = "Ошибка при оплате заказа"
     }, [])
     return (
-        <main>
+        <main className='pt-4 pt-lg-5'>
             <section className="mt-5 mb-5">
                 <div className="container">
                     <div className="row justify-content-center">

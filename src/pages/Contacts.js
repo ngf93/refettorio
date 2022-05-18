@@ -7,7 +7,7 @@ const About = () => {
     }, [])
 
     return (
-        <main>
+        <main className='pt-4 pt-lg-5'>
             <section id="sec-8" className="mb-8">
                 <div className="container">
                     <h1 className="h2 fw-7 mb-4 text-center text-md-start">Контакты</h1>

@@ -170,7 +170,7 @@ const Home = observer(() => {
                             <img src="/images/main-slider/slide1.jpg" alt="" className='slide-bg'/>
                             <div className='container'>
                                 <div className='row'>
-                                    <div className='col-6'>
+                                    <div className='col-md-6'>
                                         <h1>Пиццерия Refettorio!</h1>
                                         <p className='fs-15 mb-2'>Дорогие гости!</p>
                                         <p className='fs-15 mb-3'>Мы возвращаем скидку в заведении по будням с 12 до 15 - 20%.</p>
@@ -188,10 +188,10 @@ const Home = observer(() => {
                             <img src="/images/main-slider/slide2.jpg" alt="" className='slide-bg'/>
                             <div className='container'>
                                 <div className='row'>
-                                    <div className='col-6'>
+                                    <div className='col-md-6'>
                                         <h2>Вы можете скачать наше мобильное приложение</h2>
                                         <p className='fs-15 mb-2'>Наше приложение на доставку уже появилось в GOOGLE PLAY и APP STORE*</p>
-                                        <div className='d-flex text-center mt-4'>
+                                        <div className='d-flex justify-content-center justify-content-md-start text-center mt-4'>
                                             <figure className='position-relative'>
                                                 <img src="/images/qr-1.jpeg" alt="Android"/>
                                                 <figcaption className='mt-2'><a className='stretched-link' onClick={()=>setAnd(true)}>Android</a></figcaption>
@@ -208,33 +208,33 @@ const Home = observer(() => {
                     </Swiper>
                 </section>
 
-                <section className="sec-2 mb-8 mt-3 mt-md-5">
+                <section className="sec-2 mb-8 mt-4 mt-md-5">
                     <div className="container">
                         <h2>Мы предлагаем ознакомиться с нашим меню</h2>
-                        <div className='d-flex align-items-center justify-content-between'>
-                            <div className='ingredints-sort d-flex align-items-center'>
-                                <a href="" className='me-3'>
+                        <div className='d-lg-flex flex-lg-row-reverse align-items-center justify-content-between'>
+                            <div className='text-lg-end ms-lg-5 mb-3 mb-lg-0'>ГОТОВОЕ БЛЮДО МОЖЕТ ОТЛИЧАТЬСЯ ОТ БЛЮДА НА ФОТОГРАФИИ</div>
+                            <div className='ingredints-sort d-flex align-items-center flex-wrap'>
+                                <a href="" className='me-2 me-lg-md-3 mb-2'>
                                     <img src='/images/icons/vegan.png' alt="вегетарианское" className='me-2'/>
                                     вегетарианское
                                 </a>
-                                <a href="" className='me-3'>
+                                <a href="" className='me-2 me-lg-3 mb-2'>
                                     <img src='/images/icons/seafood.png' alt="рыбы" className='me-2'/>
                                     рыбы
                                 </a>
-                                <a href="" className='me-3'>
+                                <a href="" className='me-2 me-lg-3 mb-2'>
                                     <img src='/images/icons/spicy.png' alt="острое" className='me-2'/>
                                     острое
                                 </a>
-                                <a href="" className='me-3'>
+                                <a href="" className='me-2 me-lg-3 mb-2'>
                                     <img src='/images/icons/chicken.png' alt="курица" className='me-2'/>
                                     курица
                                 </a>
-                                <a href="">
+                                <a href="" className='me-2 me-lg-2 mb-2'>
                                     <img src='/images/icons/meat.png' alt="мясо" className='me-2'/>
                                     мясо
                                 </a>
                             </div>
-                            <div className='text-end ms-5'>ГОТОВОЕ БЛЮДО МОЖЕТ ОТЛИЧАТЬСЯ ОТ БЛЮДА НА ФОТОГРАФИИ</div>
                         </div>
                     
                         {/* <p style={{textAlign: 'center',margin: 30,fontSize: 18, color: 'red'}}>На сайте ведутся технические работы, заказы принимаем по телефонам: Ямашева 97: +7 843 226-80-60, Гвардейская 33: +7 843 226-80-06</p> */}
@@ -364,7 +364,7 @@ const Home = observer(() => {
                         >
                             <SwiperSlide>
                                 <div className='review'>
-                                    <div className='d-flex align-items-center mb-4'>
+                                    <div className='d-flex align-items-center mb-3 mb-sm-4'>
                                         <img src="/images/icons/user2.svg" alt="клиент"/>
                                         <div className='ms-3 fs-13 text-truncate'>Darina Sokolovskaya</div>
                                     </div>
@@ -373,7 +373,7 @@ const Home = observer(() => {
                             </SwiperSlide>
                             <SwiperSlide>
                                 <div className='review'>
-                                    <div className='d-flex align-items-center mb-4'>
+                                    <div className='d-flex align-items-center mb-3 mb-sm-4'>
                                         <img src="/images/icons/user2.svg" alt="клиент"/>
                                         <div className='ms-3 fs-13 text-truncate'>Альберт</div>
                                     </div>
@@ -382,7 +382,7 @@ const Home = observer(() => {
                             </SwiperSlide>
                             <SwiperSlide>
                                 <div className='review'>
-                                    <div className='d-flex align-items-center mb-4'>
+                                    <div className='d-flex align-items-center mb-3 mb-sm-4'>
                                         <img src="/images/icons/user2.svg" alt="клиент"/>
                                         <div className='flex-1 ms-3 fs-13 text-truncate'>Татьяна</div>
                                     </div>
@@ -391,7 +391,7 @@ const Home = observer(() => {
                             </SwiperSlide>
                             <SwiperSlide>
                                 <div className='review'>
-                                    <div className='d-flex align-items-center mb-4'>
+                                    <div className='d-flex align-items-center mb-3 mb-sm-4'>
                                         <img src="/images/icons/user2.svg" alt="клиент"/>
                                         <div className='flex-1 ms-3 fs-13 text-truncate'>Лилия</div>
                                     </div>
@@ -400,7 +400,7 @@ const Home = observer(() => {
                             </SwiperSlide>
                             <SwiperSlide>
                                 <div className='review'>
-                                    <div className='d-flex align-items-center mb-4'>
+                                    <div className='d-flex align-items-center mb-3 mb-sm-4'>
                                         <img src="/images/icons/user2.svg" alt="клиент"/>
                                         <div className='flex-1 ms-3 fs-13 text-truncate'>Юлия</div>
                                     </div>
@@ -408,14 +408,14 @@ const Home = observer(() => {
                                 </div>
                             </SwiperSlide>
                         </Swiper>
-                        <button type="button" onClick={()=>setReview(true)} className='btn btn-1 fs-12 mt-5'>Оставить отзыв</button>
+                        <button type="button" onClick={()=>setReview(true)} className='btn btn-1 fs-12 mt-4 mt-sm-5'>Оставить отзыв</button>
                     </div>
                 </section>
 
-                <section className='mb-5'>
+                <section id="sec-5" className='mb-md-5'>
                     <div className='container py-5'>
                         <div class="row">
-                            <div class="col-lg-4">
+                            <div class="col-lg-4 mb-4 mb-lg-0">
                                 <h2>Контакты</h2>
                                 <div className='fs-12'>
                                     <div className='fw-6 mb-2'>Телефон:</div>

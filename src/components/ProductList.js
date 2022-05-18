@@ -13,7 +13,7 @@ const ProductList = observer(() => {
             <Element name={category.item.id} className="element">
                 <h2 className="mb-4">{category.item.title}</h2>
             </Element>
-            <div className="row row-cols-sm-3 row-cols-xl-4 gx-2 gy-3 g-md-4">
+            <div className="row row-cols-sm-3 row-cols-xl-4 gx-3 gy-3 g-md-4">
                 {
                     category.products.map(product => <ProductItem key={product.id} product={product} />)
                 }

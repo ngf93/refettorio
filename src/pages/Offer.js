@@ -5,10 +5,10 @@ const Policy = () => {
         document.title = "Публичная оферта"
     }, [])
     return (
-        <main>
+        <main className='pt-4 pt-lg-5'>
             <section id="sec-8" className="mb-8">
                 <div className="container">
-                    <h1>Публичная оферта о продаже товаров дистанционным способом</h1>
+                    <h1 className='inner'>Публичная оферта о продаже товаров дистанционным способом</h1>
                     <p>(действует с 01 января 2018 года)</p>
                     <br />
                     <h5>1. Термины и определения</h5>
