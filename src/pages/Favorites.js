@@ -15,7 +15,7 @@ const Favorites = () => {
     }, [])
     if (favorite && favorite.favorite.length > 0) {
         return (
-            <main className='pt-5'>
+            <main className='pt-4 pt-lg-5'>
                 <section className="mb-8">
                     <div className="container">
                         <div className="d-sm-flex justify-content-between align-items-center mb-4 mb-md-5">
@@ -34,7 +34,7 @@ const Favorites = () => {
         )
     } else {
         return (
-            <main className='pt-5'>
+            <main className='pt-4 pt-lg-5'>
                 <div className="container mb-4 mb-md-5">
                     <nav aria-label="breadcrumb">
                         <ol className="breadcrumb mb-0">

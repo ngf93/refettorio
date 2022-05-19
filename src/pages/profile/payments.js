@@ -6,7 +6,7 @@ import SideBar from "./components/menu";
 const Payments = () => {
     const { id } = useParams()
     return (
-        <main>
+        <main className='pt-4 pt-lg-5'>
             <section id="sec-13" className="mb-8">
                 <div className="container">
                     <div className="row">
